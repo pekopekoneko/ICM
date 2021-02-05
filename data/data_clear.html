@@ -1,0 +1,413 @@
+<!DOCTYPE html>
+
+<html>
+
+<head>
+
+<meta charset="utf-8" />
+<meta name="generator" content="pandoc" />
+<meta http-equiv="X-UA-Compatible" content="IE=EDGE" />
+
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+
+<meta name="author" content="Vignette Author" />
+
+<meta name="date" content="2021-02-05" />
+
+<title>Vignette Title</title>
+
+<script src="data:application/javascript;base64,Ly8gUGFuZG9jIDIuOSBhZGRzIGF0dHJpYnV0ZXMgb24gYm90aCBoZWFkZXIgYW5kIGRpdi4gV2UgcmVtb3ZlIHRoZSBmb3JtZXIgKHRvCi8vIGJlIGNvbXBhdGlibGUgd2l0aCB0aGUgYmVoYXZpb3Igb2YgUGFuZG9jIDwgMi44KS4KZG9jdW1lbnQuYWRkRXZlbnRMaXN0ZW5lcignRE9NQ29udGVudExvYWRlZCcsIGZ1bmN0aW9uKGUpIHsKICB2YXIgaHMgPSBkb2N1bWVudC5xdWVyeVNlbGVjdG9yQWxsKCJkaXYuc2VjdGlvbltjbGFzcyo9J2xldmVsJ10gPiA6Zmlyc3QtY2hpbGQiKTsKICB2YXIgaSwgaCwgYTsKICBmb3IgKGkgPSAwOyBpIDwgaHMubGVuZ3RoOyBpKyspIHsKICAgIGggPSBoc1tpXTsKICAgIGlmICghL15oWzEtNl0kL2kudGVzdChoLnRhZ05hbWUpKSBjb250aW51ZTsgIC8vIGl0IHNob3VsZCBiZSBhIGhlYWRlciBoMS1oNgogICAgYSA9IGguYXR0cmlidXRlczsKICAgIHdoaWxlIChhLmxlbmd0aCA+IDApIGgucmVtb3ZlQXR0cmlidXRlKGFbMF0ubmFtZSk7CiAgfQp9KTsK"></script>
+
+<style type="text/css">
+  code{white-space: pre-wrap;}
+  span.smallcaps{font-variant: small-caps;}
+  span.underline{text-decoration: underline;}
+  div.column{display: inline-block; vertical-align: top; width: 50%;}
+  div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+  ul.task-list{list-style: none;}
+    </style>
+
+
+<style type="text/css">code{white-space: pre;}</style>
+<style type="text/css" data-origin="pandoc">
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+    color: #aaaaaa;
+  }
+pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+code span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code span.at { color: #7d9029; } /* Attribute */
+code span.bn { color: #40a070; } /* BaseN */
+code span.bu { } /* BuiltIn */
+code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code span.ch { color: #4070a0; } /* Char */
+code span.cn { color: #880000; } /* Constant */
+code span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code span.dt { color: #902000; } /* DataType */
+code span.dv { color: #40a070; } /* DecVal */
+code span.er { color: #ff0000; font-weight: bold; } /* Error */
+code span.ex { } /* Extension */
+code span.fl { color: #40a070; } /* Float */
+code span.fu { color: #06287e; } /* Function */
+code span.im { } /* Import */
+code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+code span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code span.op { color: #666666; } /* Operator */
+code span.ot { color: #007020; } /* Other */
+code span.pp { color: #bc7a00; } /* Preprocessor */
+code span.sc { color: #4070a0; } /* SpecialChar */
+code span.ss { color: #bb6688; } /* SpecialString */
+code span.st { color: #4070a0; } /* String */
+code span.va { color: #19177c; } /* Variable */
+code span.vs { color: #4070a0; } /* VerbatimString */
+code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+
+</style>
+<script>
+// apply pandoc div.sourceCode style to pre.sourceCode instead
+(function() {
+  var sheets = document.styleSheets;
+  for (var i = 0; i < sheets.length; i++) {
+    if (sheets[i].ownerNode.dataset["origin"] !== "pandoc") continue;
+    try { var rules = sheets[i].cssRules; } catch (e) { continue; }
+    for (var j = 0; j < rules.length; j++) {
+      var rule = rules[j];
+      // check if there is a div.sourceCode rule
+      if (rule.type !== rule.STYLE_RULE || rule.selectorText !== "div.sourceCode") continue;
+      var style = rule.style.cssText;
+      // check if color or background-color is set
+      if (rule.style.color === '' && rule.style.backgroundColor === '') continue;
+      // replace div.sourceCode by a pre.sourceCode rule
+      sheets[i].deleteRule(j);
+      sheets[i].insertRule('pre.sourceCode{' + style + '}', j);
+    }
+  }
+})();
+</script>
+
+
+
+
+<link rel="stylesheet" href="data:text/css,body%20%7B%0Abackground%2Dcolor%3A%20%23fff%3B%0Amargin%3A%201em%20auto%3B%0Amax%2Dwidth%3A%20700px%3B%0Aoverflow%3A%20visible%3B%0Apadding%2Dleft%3A%202em%3B%0Apadding%2Dright%3A%202em%3B%0Afont%2Dfamily%3A%20%22Open%20Sans%22%2C%20%22Helvetica%20Neue%22%2C%20Helvetica%2C%20Arial%2C%20sans%2Dserif%3B%0Afont%2Dsize%3A%2014px%3B%0Aline%2Dheight%3A%201%2E35%3B%0A%7D%0A%23TOC%20%7B%0Aclear%3A%20both%3B%0Amargin%3A%200%200%2010px%2010px%3B%0Apadding%3A%204px%3B%0Awidth%3A%20400px%3B%0Aborder%3A%201px%20solid%20%23CCCCCC%3B%0Aborder%2Dradius%3A%205px%3B%0Abackground%2Dcolor%3A%20%23f6f6f6%3B%0Afont%2Dsize%3A%2013px%3B%0Aline%2Dheight%3A%201%2E3%3B%0A%7D%0A%23TOC%20%2Etoctitle%20%7B%0Afont%2Dweight%3A%20bold%3B%0Afont%2Dsize%3A%2015px%3B%0Amargin%2Dleft%3A%205px%3B%0A%7D%0A%23TOC%20ul%20%7B%0Apadding%2Dleft%3A%2040px%3B%0Amargin%2Dleft%3A%20%2D1%2E5em%3B%0Amargin%2Dtop%3A%205px%3B%0Amargin%2Dbottom%3A%205px%3B%0A%7D%0A%23TOC%20ul%20ul%20%7B%0Amargin%2Dleft%3A%20%2D2em%3B%0A%7D%0A%23TOC%20li%20%7B%0Aline%2Dheight%3A%2016px%3B%0A%7D%0Atable%20%7B%0Amargin%3A%201em%20auto%3B%0Aborder%2Dwidth%3A%201px%3B%0Aborder%2Dcolor%3A%20%23DDDDDD%3B%0Aborder%2Dstyle%3A%20outset%3B%0Aborder%2Dcollapse%3A%20collapse%3B%0A%7D%0Atable%20th%20%7B%0Aborder%2Dwidth%3A%202px%3B%0Apadding%3A%205px%3B%0Aborder%2Dstyle%3A%20inset%3B%0A%7D%0Atable%20td%20%7B%0Aborder%2Dwidth%3A%201px%3B%0Aborder%2Dstyle%3A%20inset%3B%0Aline%2Dheight%3A%2018px%3B%0Apadding%3A%205px%205px%3B%0A%7D%0Atable%2C%20table%20th%2C%20table%20td%20%7B%0Aborder%2Dleft%2Dstyle%3A%20none%3B%0Aborder%2Dright%2Dstyle%3A%20none%3B%0A%7D%0Atable%20thead%2C%20table%20tr%2Eeven%20%7B%0Abackground%2Dcolor%3A%20%23f7f7f7%3B%0A%7D%0Ap%20%7B%0Amargin%3A%200%2E5em%200%3B%0A%7D%0Ablockquote%20%7B%0Abackground%2Dcolor%3A%20%23f6f6f6%3B%0Apadding%3A%200%2E25em%200%2E75em%3B%0A%7D%0Ahr%20%7B%0Aborder%2Dstyle%3A%20solid%3B%0Aborder%3A%20none%3B%0Aborder%2Dtop%3A%201px%20solid%20%23777%3B%0Amargin%3A%2028px%200%3B%0A%7D%0Adl%20%7B%0Amargin%2Dleft%3A%200%3B%0A%7D%0Adl%20dd%20%7B%0Amargin%2Dbottom%3A%2013px%3B%0Amargin%2Dleft%3A%2013px%3B%0A%7D%0Adl%20dt%20%7B%0Afont%2Dweight%3A%20bold%3B%0A%7D%0Aul%20%7B%0Amargin%2Dtop%3A%200%3B%0A%7D%0Aul%20li%20%7B%0Alist%2Dstyle%3A%20circle%20outside%3B%0A%7D%0Aul%20ul%20%7B%0Amargin%2Dbottom%3A%200%3B%0A%7D%0Apre%2C%20code%20%7B%0Abackground%2Dcolor%3A%20%23f7f7f7%3B%0Aborder%2Dradius%3A%203px%3B%0Acolor%3A%20%23333%3B%0Awhite%2Dspace%3A%20pre%2Dwrap%3B%20%0A%7D%0Apre%20%7B%0Aborder%2Dradius%3A%203px%3B%0Amargin%3A%205px%200px%2010px%200px%3B%0Apadding%3A%2010px%3B%0A%7D%0Apre%3Anot%28%5Bclass%5D%29%20%7B%0Abackground%2Dcolor%3A%20%23f7f7f7%3B%0A%7D%0Acode%20%7B%0Afont%2Dfamily%3A%20Consolas%2C%20Monaco%2C%20%27Courier%20New%27%2C%20monospace%3B%0Afont%2Dsize%3A%2085%25%3B%0A%7D%0Ap%20%3E%20code%2C%20li%20%3E%20code%20%7B%0Apadding%3A%202px%200px%3B%0A%7D%0Adiv%2Efigure%20%7B%0Atext%2Dalign%3A%20center%3B%0A%7D%0Aimg%20%7B%0Abackground%2Dcolor%3A%20%23FFFFFF%3B%0Apadding%3A%202px%3B%0Aborder%3A%201px%20solid%20%23DDDDDD%3B%0Aborder%2Dradius%3A%203px%3B%0Aborder%3A%201px%20solid%20%23CCCCCC%3B%0Amargin%3A%200%205px%3B%0A%7D%0Ah1%20%7B%0Amargin%2Dtop%3A%200%3B%0Afont%2Dsize%3A%2035px%3B%0Aline%2Dheight%3A%2040px%3B%0A%7D%0Ah2%20%7B%0Aborder%2Dbottom%3A%204px%20solid%20%23f7f7f7%3B%0Apadding%2Dtop%3A%2010px%3B%0Apadding%2Dbottom%3A%202px%3B%0Afont%2Dsize%3A%20145%25%3B%0A%7D%0Ah3%20%7B%0Aborder%2Dbottom%3A%202px%20solid%20%23f7f7f7%3B%0Apadding%2Dtop%3A%2010px%3B%0Afont%2Dsize%3A%20120%25%3B%0A%7D%0Ah4%20%7B%0Aborder%2Dbottom%3A%201px%20solid%20%23f7f7f7%3B%0Amargin%2Dleft%3A%208px%3B%0Afont%2Dsize%3A%20105%25%3B%0A%7D%0Ah5%2C%20h6%20%7B%0Aborder%2Dbottom%3A%201px%20solid%20%23ccc%3B%0Afont%2Dsize%3A%20105%25%3B%0A%7D%0Aa%20%7B%0Acolor%3A%20%230033dd%3B%0Atext%2Ddecoration%3A%20none%3B%0A%7D%0Aa%3Ahover%20%7B%0Acolor%3A%20%236666ff%3B%20%7D%0Aa%3Avisited%20%7B%0Acolor%3A%20%23800080%3B%20%7D%0Aa%3Avisited%3Ahover%20%7B%0Acolor%3A%20%23BB00BB%3B%20%7D%0Aa%5Bhref%5E%3D%22http%3A%22%5D%20%7B%0Atext%2Ddecoration%3A%20underline%3B%20%7D%0Aa%5Bhref%5E%3D%22https%3A%22%5D%20%7B%0Atext%2Ddecoration%3A%20underline%3B%20%7D%0A%0Acode%20%3E%20span%2Ekw%20%7B%20color%3A%20%23555%3B%20font%2Dweight%3A%20bold%3B%20%7D%20%0Acode%20%3E%20span%2Edt%20%7B%20color%3A%20%23902000%3B%20%7D%20%0Acode%20%3E%20span%2Edv%20%7B%20color%3A%20%2340a070%3B%20%7D%20%0Acode%20%3E%20span%2Ebn%20%7B%20color%3A%20%23d14%3B%20%7D%20%0Acode%20%3E%20span%2Efl%20%7B%20color%3A%20%23d14%3B%20%7D%20%0Acode%20%3E%20span%2Ech%20%7B%20color%3A%20%23d14%3B%20%7D%20%0Acode%20%3E%20span%2Est%20%7B%20color%3A%20%23d14%3B%20%7D%20%0Acode%20%3E%20span%2Eco%20%7B%20color%3A%20%23888888%3B%20font%2Dstyle%3A%20italic%3B%20%7D%20%0Acode%20%3E%20span%2Eot%20%7B%20color%3A%20%23007020%3B%20%7D%20%0Acode%20%3E%20span%2Eal%20%7B%20color%3A%20%23ff0000%3B%20font%2Dweight%3A%20bold%3B%20%7D%20%0Acode%20%3E%20span%2Efu%20%7B%20color%3A%20%23900%3B%20font%2Dweight%3A%20bold%3B%20%7D%20%0Acode%20%3E%20span%2Eer%20%7B%20color%3A%20%23a61717%3B%20background%2Dcolor%3A%20%23e3d2d2%3B%20%7D%20%0A" type="text/css" />
+
+
+
+
+</head>
+
+<body>
+
+
+
+
+<h1 class="title toc-ignore">Vignette Title</h1>
+<h4 class="author">Vignette Author</h4>
+<h4 class="date">2021-02-05</h4>
+
+
+
+<p>#data_by_artist</p>
+<p>通过总结，我们发现该文件没有什么差错，data_by_artist并没有什么问题，无缺失值</p>
+<div class="sourceCode" id="cb1"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a>mynormalize<span class="ot">&lt;-</span><span class="cf">function</span>(data,array)</span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a>{</span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a>  temp<span class="ot">&lt;-</span><span class="fu">matrix</span>(<span class="dv">0</span>,<span class="at">nrow=</span><span class="fu">nrow</span>(data),<span class="at">ncol=</span><span class="fu">length</span>(array))</span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a>  now<span class="ot">&lt;-</span><span class="dv">1</span>;</span>
+<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a>  <span class="cf">for</span>(i <span class="cf">in</span> array)</span>
+<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a>  {</span>
+<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a>    inside_temp<span class="ot">&lt;-</span><span class="fu">scale</span>(data[,i])</span>
+<span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a>    temp[,now]<span class="ot">=</span>inside_temp[<span class="dv">1</span><span class="sc">:</span><span class="fu">nrow</span>(data)]</span>
+<span id="cb1-9"><a href="#cb1-9" aria-hidden="true" tabindex="-1"></a>    now<span class="ot">=</span>now<span class="sc">+</span><span class="dv">1</span></span>
+<span id="cb1-10"><a href="#cb1-10" aria-hidden="true" tabindex="-1"></a>  }</span>
+<span id="cb1-11"><a href="#cb1-11" aria-hidden="true" tabindex="-1"></a>  this_colname<span class="ot">&lt;-</span><span class="fu">colnames</span>(data)[array]</span>
+<span id="cb1-12"><a href="#cb1-12" aria-hidden="true" tabindex="-1"></a>  temp<span class="ot">&lt;-</span><span class="fu">as.data.frame</span>(temp)</span>
+<span id="cb1-13"><a href="#cb1-13" aria-hidden="true" tabindex="-1"></a>  <span class="fu">colnames</span>(temp)<span class="ot">&lt;-</span><span class="fu">paste0</span>(this_colname,<span class="st">&quot;_normalized&quot;</span>)</span>
+<span id="cb1-14"><a href="#cb1-14" aria-hidden="true" tabindex="-1"></a>  <span class="fu">return</span>(temp)</span>
+<span id="cb1-15"><a href="#cb1-15" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb1-16"><a href="#cb1-16" aria-hidden="true" tabindex="-1"></a>my_na<span class="ot">&lt;-</span><span class="cf">function</span>(data,array)</span>
+<span id="cb1-17"><a href="#cb1-17" aria-hidden="true" tabindex="-1"></a>{</span>
+<span id="cb1-18"><a href="#cb1-18" aria-hidden="true" tabindex="-1"></a>  a<span class="ot">&lt;-</span><span class="cn">NULL</span></span>
+<span id="cb1-19"><a href="#cb1-19" aria-hidden="true" tabindex="-1"></a>  temp<span class="ot">&lt;-</span><span class="dv">1</span></span>
+<span id="cb1-20"><a href="#cb1-20" aria-hidden="true" tabindex="-1"></a>  <span class="cf">for</span>(i <span class="cf">in</span> array)</span>
+<span id="cb1-21"><a href="#cb1-21" aria-hidden="true" tabindex="-1"></a>  {</span>
+<span id="cb1-22"><a href="#cb1-22" aria-hidden="true" tabindex="-1"></a>    a<span class="ot">=</span><span class="fu">c</span>(a,<span class="fu">which</span>(<span class="fu">as.numeric</span>(<span class="fu">is.na</span>(data[,i]))<span class="sc">==</span><span class="dv">1</span>))</span>
+<span id="cb1-23"><a href="#cb1-23" aria-hidden="true" tabindex="-1"></a>  }</span>
+<span id="cb1-24"><a href="#cb1-24" aria-hidden="true" tabindex="-1"></a>  <span class="fu">return</span>(<span class="fu">unique</span>(a))</span>
+<span id="cb1-25"><a href="#cb1-25" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb1-26"><a href="#cb1-26" aria-hidden="true" tabindex="-1"></a>all_numeric<span class="ot">&lt;-</span><span class="cf">function</span>(data,array)</span>
+<span id="cb1-27"><a href="#cb1-27" aria-hidden="true" tabindex="-1"></a>{</span>
+<span id="cb1-28"><a href="#cb1-28" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb1-29"><a href="#cb1-29" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb1-30"><a href="#cb1-30" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(lubridate)</span></code></pre></div>
+<pre><code>## 
+## Attaching package: &#39;lubridate&#39;</code></pre>
+<pre><code>## The following objects are masked from &#39;package:base&#39;:
+## 
+##     date, intersect, setdiff, union</code></pre>
+<div class="sourceCode" id="cb4"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(readxl)</span></code></pre></div>
+<div class="sourceCode" id="cb5"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a>data<span class="ot">&lt;-</span><span class="fu">read.csv</span>(<span class="st">&quot;data_by_artist.csv&quot;</span>,<span class="at">stringsAsFactors=</span><span class="cn">TRUE</span>)</span>
+<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(data)</span></code></pre></div>
+<pre><code>##          artist_name artist_id danceability    energy   valence     tempo
+## 1      Frank Sinatra    792507    0.3844785 0.2380167 0.3642882 110.18170
+## 2  Vladimir Horowitz    119107    0.3432096 0.1188443 0.2259509  94.90068
+## 3        Johnny Cash    816890    0.6198034 0.4493812 0.6806623 115.03775
+## 4     Billie Holiday     79016    0.5726365 0.2013680 0.4989344 109.91217
+## 5          Bob Dylan     66915    0.5125980 0.4779321 0.5519337 126.16015
+## 6 The Rolling Stones    894465    0.5244464 0.7199150 0.6553318 123.76472
+##     loudness mode key acousticness instrumentalness  liveness speechiness
+## 1 -14.271141    1   5    0.7356482       0.02085498 0.2321056  0.04961424
+## 2 -23.193418    1   1    0.9900704       0.87950787 0.1838123  0.04335982
+## 3 -11.593104    1  10    0.6856369       0.02264655 0.2422427  0.09821612
+## 4 -13.225966    1   5    0.9084986       0.01306362 0.2177268  0.06243178
+## 5 -11.184330    1   7    0.5625668       0.03421143 0.3089777  0.06453489
+## 6  -7.830265    1   0    0.2937882       0.17613706 0.2684434  0.05143990
+##   duration_ms popularity count
+## 1    189179.9  26.004383  1369
+## 2    266541.1   3.592378  1207
+## 3    162279.3  26.614130  1104
+## 4    185131.5  15.621005  1095
+## 5    256713.4  30.860806  1092
+## 6    229706.0  34.573913  1035</code></pre>
+<div class="sourceCode" id="cb7"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(data)</span></code></pre></div>
+<pre><code>##         artist_name     artist_id        danceability        energy       
+##  Bill Evans   :   3   Min.   :     74   Min.   :0.0804   Min.   :0.00198  
+##  Prince       :   3   1st Qu.: 169492   1st Qu.:0.4602   1st Qu.:0.43000  
+##  The Outsiders:   3   Median : 444068   Median :0.5501   Median :0.59848  
+##  Alphaville   :   2   Mean   : 588859   Mean   :0.5453   Mean   :0.58546  
+##  Big Black    :   2   3rd Qu.: 785732   3rd Qu.:0.6370   3rd Qu.:0.75131  
+##  Bobby Brown  :   2   Max.   :3670556   Max.   :0.9620   Max.   :0.99950  
+##  (Other)      :5839                                                       
+##     valence            tempo           loudness            mode       
+##  Min.   :0.02785   Min.   : 30.95   Min.   :-40.147   Min.   :0.0000  
+##  1st Qu.:0.40964   1st Qu.:109.46   1st Qu.:-12.240   1st Qu.:1.0000  
+##  Median :0.55400   Median :119.31   Median : -9.528   Median :1.0000  
+##  Mean   :0.54514   Mean   :120.36   Mean   : -9.957   Mean   :0.8213  
+##  3rd Qu.:0.68900   3rd Qu.:129.84   3rd Qu.: -6.865   3rd Qu.:1.0000  
+##  Max.   :0.98000   Max.   :206.68   Max.   :  1.342   Max.   :1.0000  
+##                                                                       
+##       key          acousticness      instrumentalness      liveness     
+##  Min.   : 0.000   Min.   :0.000001   Min.   :0.000000   Min.   :0.0116  
+##  1st Qu.: 2.000   1st Qu.:0.081455   1st Qu.:0.000097   1st Qu.:0.1249  
+##  Median : 6.000   Median :0.268000   Median :0.008802   Median :0.1700  
+##  Mean   : 5.513   Mean   :0.343568   Mean   :0.132334   Mean   :0.1957  
+##  3rd Qu.: 9.000   3rd Qu.:0.577111   3rd Qu.:0.142992   3rd Qu.:0.2294  
+##  Max.   :11.000   Max.   :0.996000   Max.   :0.973000   Max.   :0.9730  
+##                                                                         
+##   speechiness       duration_ms        popularity        count        
+##  Min.   :0.02320   Min.   :  45707   Min.   : 0.00   Min.   :   1.00  
+##  1st Qu.:0.03814   1st Qu.: 197228   1st Qu.:32.33   1st Qu.:   4.00  
+##  Median :0.04866   Median : 234993   Median :40.29   Median :  10.00  
+##  Mean   :0.06970   Mean   : 246334   Mean   :39.60   Mean   :  33.95  
+##  3rd Qu.:0.07289   3rd Qu.: 276224   3rd Qu.:48.50   3rd Qu.:  31.00  
+##  Max.   :0.95800   Max.   :1640000   Max.   :81.00   Max.   :1369.00  
+## </code></pre>
+<div class="sourceCode" id="cb9"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a>array<span class="ot">&lt;-</span><span class="fu">c</span>(<span class="dv">2</span><span class="sc">:</span><span class="dv">16</span>)</span>
+<span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a><span class="fu">my_na</span>(data,array)</span></code></pre></div>
+<pre><code>## integer(0)</code></pre>
+<div class="sourceCode" id="cb11"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a>output<span class="ot">&lt;-</span><span class="fu">cbind</span>(data,<span class="fu">mynormalize</span>(data,array))</span>
+<span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a><span class="fu">write.csv</span>(output,<span class="st">&quot;data_by_artist_new.csv&quot;</span>)</span></code></pre></div>
+<p>#data_by_year</p>
+<p>从summary种可以看到data_by_year也没什么错,无缺失值</p>
+<div class="sourceCode" id="cb12"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a>data<span class="ot">&lt;-</span><span class="fu">read.csv</span>(<span class="st">&quot;data_by_year.csv&quot;</span>,<span class="at">stringsAsFactors=</span><span class="cn">TRUE</span>,<span class="at">fileEncoding =</span> <span class="st">&quot;UTF-8&quot;</span>)</span>
+<span id="cb12-2"><a href="#cb12-2" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(data)</span></code></pre></div>
+<pre><code>##   year danceability    energy   valence    tempo  loudness mode key
+## 1 1921    0.4256609 0.2367836 0.4254945 100.3978 -17.09544    1   7
+## 2 1922    0.4800000 0.2370262 0.5340556 101.3761 -19.17996    1  10
+## 3 1923    0.5684615 0.2469361 0.6247876 112.4566 -14.37388    1   0
+## 4 1924    0.5486540 0.3470329 0.6685738 120.6534 -14.20230    1  10
+## 5 1925    0.5718897 0.2643726 0.6164304 115.6717 -14.51671    1   5
+## 6 1926    0.5582952 0.2391949 0.4959615 108.4966 -16.41062    1   5
+##   acousticness instrumentalness  liveness speechiness duration_ms popularity
+## 1    0.8958234        0.3223301 0.2158141  0.07725781    229911.9  0.3515625
+## 2    0.9392361        0.4404699 0.2386472  0.11541944    167904.5  0.1388889
+## 3    0.9763289        0.4019325 0.2366556  0.09861894    178356.3  5.7278107
+## 4    0.9355745        0.5839547 0.2378747  0.09020971    188461.6  0.6033755
+## 5    0.9654221        0.4088934 0.2430935  0.11545741    184130.7  2.7072243
+## 6    0.7409196        0.4685053 0.2340525  0.30667243    170391.5  1.6132723</code></pre>
+<div class="sourceCode" id="cb14"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(data)</span></code></pre></div>
+<pre><code>##       year       danceability        energy          valence      
+##  Min.   :1921   Min.   :0.4035   Min.   :0.2043   Min.   :0.3736  
+##  1st Qu.:1946   1st Qu.:0.5002   1st Qu.:0.2862   1st Qu.:0.4958  
+##  Median :1970   Median :0.5447   Median :0.4987   Median :0.5480  
+##  Mean   :1970   Mean   :0.5375   Mean   :0.4559   Mean   :0.5364  
+##  3rd Qu.:1995   3rd Qu.:0.5717   3rd Qu.:0.6010   3rd Qu.:0.5745  
+##  Max.   :2020   Max.   :0.6731   Max.   :0.6937   Max.   :0.6686  
+##      tempo          loudness            mode        key         acousticness   
+##  Min.   :100.4   Min.   :-19.180   Min.   :1   Min.   : 0.00   Min.   :0.2287  
+##  1st Qu.:111.8   1st Qu.:-14.309   1st Qu.:1   1st Qu.: 0.00   1st Qu.:0.2827  
+##  Median :117.6   Median :-11.762   Median :1   Median : 5.00   Median :0.4530  
+##  Mean   :116.0   Mean   :-11.917   Mean   :1   Mean   : 4.19   Mean   :0.5526  
+##  3rd Qu.:120.8   3rd Qu.: -9.716   3rd Qu.:1   3rd Qu.: 7.00   3rd Qu.:0.8670  
+##  Max.   :123.7   Max.   : -6.694   Max.   :1   Max.   :10.00   Max.   :0.9763  
+##  instrumentalness     liveness       speechiness       duration_ms    
+##  Min.   :0.03595   Min.   :0.1672   Min.   :0.05105   Min.   :167905  
+##  1st Qu.:0.09880   1st Qu.:0.1987   1st Qu.:0.06512   1st Qu.:208883  
+##  Median :0.12492   Median :0.2079   Median :0.08624   Median :234674  
+##  Mean   :0.19216   Mean   :0.2093   Mean   :0.10125   Mean   :226930  
+##  3rd Qu.:0.27776   3rd Qu.:0.2204   3rd Qu.:0.10496   3rd Qu.:248234  
+##  Max.   :0.58395   Max.   :0.2643   Max.   :0.48528   Max.   :266388  
+##    popularity     
+##  Min.   : 0.1389  
+##  1st Qu.: 2.9396  
+##  Median :33.6555  
+##  Mean   :27.2232  
+##  3rd Qu.:44.4111  
+##  Max.   :69.6555</code></pre>
+<div class="sourceCode" id="cb16"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a>array<span class="ot">&lt;-</span><span class="fu">c</span>(<span class="dv">2</span><span class="sc">:</span><span class="dv">14</span>)</span>
+<span id="cb16-2"><a href="#cb16-2" aria-hidden="true" tabindex="-1"></a><span class="fu">my_na</span>(data,array)</span></code></pre></div>
+<pre><code>## integer(0)</code></pre>
+<div class="sourceCode" id="cb18"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true" tabindex="-1"></a>output<span class="ot">&lt;-</span><span class="fu">cbind</span>(data,<span class="fu">mynormalize</span>(data,array))</span>
+<span id="cb18-2"><a href="#cb18-2" aria-hidden="true" tabindex="-1"></a><span class="fu">write.csv</span>(output,<span class="st">&quot;data_by_year_new.csv&quot;</span>)</span></code></pre></div>
+<p>#full_music_data</p>
+<p>这个年份已经被提取了，其他也没什么错误，就不提取了，因为日期格式非常奇怪</p>
+<div class="sourceCode" id="cb19"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb19-1"><a href="#cb19-1" aria-hidden="true" tabindex="-1"></a>data<span class="ot">&lt;-</span><span class="fu">read.csv</span>(<span class="st">&quot;full_music_data.csv&quot;</span>,<span class="at">stringsAsFactors=</span><span class="cn">TRUE</span>)</span>
+<span id="cb19-2"><a href="#cb19-2" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(data)</span></code></pre></div>
+<pre><code>##            artist_names artists_id danceability energy valence   tempo loudness
+## 1 [&quot;Fat Freddy&#39;s Drop&quot;]   [178301]        0.600  0.365   0.131 130.046  -13.083
+## 2 [&quot;Fat Freddy&#39;s Drop&quot;]   [178301]        0.874  0.326   0.179 119.620  -13.302
+## 3 [&quot;Fat Freddy&#39;s Drop&quot;]   [178301]        0.670  0.531   0.336 139.385   -8.267
+## 4  [&quot;Alexander O&#39;Neal&quot;]   [625201]        0.761  0.702   0.850 104.773   -8.523
+## 5  [&quot;Alexander O&#39;Neal&quot;]   [625201]        0.661  0.828   0.902 115.078  -12.673
+## 6  [&quot;Alexander O&#39;Neal&quot;]   [625201]        0.719  0.650   0.953 105.141  -12.947
+##   mode key acousticness instrumentalness liveness speechiness explicit
+## 1    0   9       0.0672         5.85e-01   0.0921      0.0498        0
+## 2    0  11       0.0136         1.48e-01   0.0993      0.1310        0
+## 3    0   9       0.0156         3.45e-01   0.3060      0.0377        0
+## 4    1   7       0.1080         3.13e-05   0.0935      0.0389        0
+## 5    0  11       0.2760         1.40e-06   0.2870      0.0390        0
+## 6    0   7       0.0103         4.36e-05   0.1330      0.0265        0
+##   duration_ms popularity year release_date                song_title..censored.
+## 1      437200         54 2005         2005                                Ernie
+## 2      581008         53 2005         2005                        Wandering Eye
+## 3      431293         55 2009     8/7/2009                             The Raft
+## 4      304427         34 1991     1/1/1991                         All True Man
+## 5      264933         37 1987    7/29/1987 (What Can I Say) To Make You Love Me
+## 6      277773         34 1987    7/29/1987                           The Lovers
+##   X
+## 1  
+## 2  
+## 3  
+## 4  
+## 5  
+## 6</code></pre>
+<div class="sourceCode" id="cb21"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb21-1"><a href="#cb21-1" aria-hidden="true" tabindex="-1"></a>array<span class="ot">&lt;-</span><span class="fu">c</span>(<span class="dv">3</span><span class="sc">:</span><span class="dv">17</span>)</span>
+<span id="cb21-2"><a href="#cb21-2" aria-hidden="true" tabindex="-1"></a><span class="fu">my_na</span>(data,array)</span></code></pre></div>
+<pre><code>## integer(0)</code></pre>
+<div class="sourceCode" id="cb23"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb23-1"><a href="#cb23-1" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(data)</span></code></pre></div>
+<pre><code>##                       artist_names      artists_id     danceability   
+##  [&#39;Wolfgang Amadeus Mozart&#39;]:  874   [26350] :  874   Min.   :0.0000  
+##  [&#39;Billie Holiday&#39;]         :  684   [79016] :  684   1st Qu.:0.4140  
+##  [&#39;Frank Sinatra&#39;]          :  677   [792507]:  677   Median :0.5340  
+##  [&#39;Vladimir Horowitz&#39;]      :  610   [119107]:  610   Mean   :0.5263  
+##  [&#39;Bob Dylan&#39;]              :  539   [66915] :  539   3rd Qu.:0.6430  
+##  [&#39;The Rolling Stones&#39;]     :  518   [894465]:  518   Max.   :0.9850  
+##  (Other)                    :94438   (Other) :94438                   
+##      energy          valence           tempo          loudness      
+##  Min.   :0.0000   Min.   :0.0000   Min.   :  0.0   Min.   :-60.000  
+##  1st Qu.:0.3190   1st Qu.:0.3250   1st Qu.: 96.1   1st Qu.:-13.554  
+##  Median :0.5370   Median :0.5410   Median :116.9   Median :-10.105  
+##  Mean   :0.5342   Mean   :0.5333   Mean   :119.0   Mean   :-10.756  
+##  3rd Qu.:0.7570   3rd Qu.:0.7472   3rd Qu.:137.2   3rd Qu.: -6.999  
+##  Max.   :1.0000   Max.   :1.0000   Max.   :244.1   Max.   :  3.744  
+##                                                                     
+##       mode            key          acousticness    instrumentalness  
+##  Min.   :0.000   Min.   : 0.000   Min.   :0.0000   Min.   :0.000000  
+##  1st Qu.:0.000   1st Qu.: 2.000   1st Qu.:0.0581   1st Qu.:0.000000  
+##  Median :1.000   Median : 5.000   Median :0.3600   Median :0.000175  
+##  Mean   :0.722   Mean   : 5.187   Mean   :0.4191   Mean   :0.125575  
+##  3rd Qu.:1.000   3rd Qu.: 8.000   3rd Qu.:0.7680   3rd Qu.:0.031900  
+##  Max.   :1.000   Max.   :11.000   Max.   :0.9960   Max.   :0.999000  
+##                                                                      
+##     liveness       speechiness         explicit        duration_ms     
+##  Min.   :0.0000   Min.   :0.00000   Min.   :0.00000   Min.   :   5108  
+##  1st Qu.:0.0955   1st Qu.:0.03330   1st Qu.:0.00000   1st Qu.: 175520  
+##  Median :0.1320   Median :0.04150   Median :0.00000   Median : 219133  
+##  Mean   :0.2070   Mean   :0.06381   Mean   :0.03709   Mean   : 238591  
+##  3rd Qu.:0.2570   3rd Qu.:0.06120   3rd Qu.:0.00000   3rd Qu.: 273936  
+##  Max.   :1.0000   Max.   :0.96400   Max.   :1.00000   Max.   :3816373  
+##                                                                        
+##    popularity          year       release_date   song_title..censored.
+##  Min.   :  0.00   Min.   :1921   1957   :  797   ********  :  146     
+##  1st Qu.: 24.00   1st Qu.:1966   1981   :  682   ********* :  138     
+##  Median : 36.00   Median :1980   1972   :  676   ****      :  136     
+##  Mean   : 35.69   Mean   :1981   1956   :  661   *******   :  113     
+##  3rd Qu.: 48.00   3rd Qu.:1997   1962   :  657   **********:  113     
+##  Max.   :100.00   Max.   :2020   1964   :  655   *****     :   80     
+##                                  (Other):94212   (Other)   :97614     
+##               X        
+##                :98338  
+##   Cavaradossi)&quot;:    1  
+##   Contessa)&quot;   :    1  
+##                        
+##                        
+##                        
+## </code></pre>
+<div class="sourceCode" id="cb25"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb25-1"><a href="#cb25-1" aria-hidden="true" tabindex="-1"></a>output<span class="ot">&lt;-</span><span class="fu">cbind</span>(data,<span class="fu">mynormalize</span>(data,array))</span>
+<span id="cb25-2"><a href="#cb25-2" aria-hidden="true" tabindex="-1"></a><span class="fu">write.csv</span>(output,<span class="st">&quot;full_music_data_new.csv&quot;</span>)</span></code></pre></div>
+<p>#influence_data</p>
+<div class="sourceCode" id="cb26"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb26-1"><a href="#cb26-1" aria-hidden="true" tabindex="-1"></a>data<span class="ot">&lt;-</span><span class="fu">read.csv</span>(<span class="st">&quot;influence_data.csv&quot;</span>,<span class="at">stringsAsFactors=</span><span class="cn">TRUE</span>)</span>
+<span id="cb26-2"><a href="#cb26-2" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(data)</span></code></pre></div>
+<pre><code>##   influencer_id influencer_name influencer_main_genre influencer_active_start
+## 1        759491   The Exploited              Pop/Rock                    1980
+## 2         25462          Tricky            Electronic                    1990
+## 3         66915       Bob Dylan              Pop/Rock                    1960
+## 4         71209   Leonard Cohen              Pop/Rock                    1950
+## 5         91438    The Gun Club              Pop/Rock                    1980
+## 6        113823  Chrissie Hynde              Pop/Rock                    1970
+##   follower_id  follower_name follower_main_genre follower_active_start
+## 1          74 Special Duties            Pop/Rock                  1980
+## 2         335      PJ Harvey            Pop/Rock                  1990
+## 3         335      PJ Harvey            Pop/Rock                  1990
+## 4         335      PJ Harvey            Pop/Rock                  1990
+## 5         335      PJ Harvey            Pop/Rock                  1990
+## 6         335      PJ Harvey            Pop/Rock                  1990</code></pre>
+<div class="sourceCode" id="cb28"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb28-1"><a href="#cb28-1" aria-hidden="true" tabindex="-1"></a>a<span class="ot">&lt;-</span><span class="cn">NULL</span></span>
+<span id="cb28-2"><a href="#cb28-2" aria-hidden="true" tabindex="-1"></a>temp<span class="ot">=</span><span class="dv">1</span></span></code></pre></div>
+
+
+
+<!-- code folding -->
+
+
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+  (function () {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    script.src  = "https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML";
+    document.getElementsByTagName("head")[0].appendChild(script);
+  })();
+</script>
+
+</body>
+</html>
